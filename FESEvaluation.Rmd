@@ -2,11 +2,11 @@
 title: "Evaluation of Forest Ecosystem Services"
 author: "M. De Cáceres, J.V. Roces Diaz, J. Martinez-Vilalta, J. Vayreda, M. Banqué,
   F. D’Adamo, J.M. Espelta"
-date: "2023-08-21"
+date: "2023-09-04"
 output:
   word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
 bibliography: references.bib
 ---
 
@@ -31,7 +31,7 @@ The following table, modified from @roces-diaz_assessing_2018, provides a summar
 | Regulating | Water regulation | Vegetation and soil water storage capacity | Sum of vegetation water storage capacity and soil water holding capacity of the forest stand |
 | Regulating | Erosion control | Erosion control | Amount of rainfall erosive potential that is mitigated due to vegetation cover |
 | Cultural | Recreational | Potential recreational value | The perception of the value of the forest stand for recreational purposes as a function of its structure and composition |
-| Cultural | Biodiversity potential | Biodiversity Potential Index | Potential of the forest stand to serve as habitat for biodiversity, on the basis of its vertical structure, diversity of woody species and presence of dead wood and large trees |
+| Supporting | Biodiversity potential | Biodiversity Potential Index | Potential of the forest stand to serve as habitat for biodiversity, on the basis of its diversity of woody species, vertical structure, presence of large trees and standing and downed dead wood |
 
 The next sections detail the metrics and estimation procedures of each ecosystem service. 
 
@@ -47,10 +47,10 @@ The next sections detail the metrics and estimation procedures of each ecosystem
 
 **Estimation procedures**: For historic periods, potential harvesting can be obtained comparing standing stock volumes between consecutive surveys of forest inventories [@roces-diaz_temporal_2021]. This assessment should preferably exclude forest plots where management has occurred between surveys, because otherwise the potential supply may be underestimated. For future projections, simulated forest dynamics should not include forest management, either. A distinction is made between timber (wood for construction, furniture or other uses) and firewood (wood for burning), on the basis of tree diameter at breast height (DBH) and species: 
 
-  + *Timber*: Changes in stem wood volume of trees from all species, except holm oak (*Quercus ilex*), and DBH > 22.5
-  + *Firewood*: Changes in stem wood volume of holm oak trees (*Quercus ilex*), with DBH > 7.5, or stem wood volume of trees of other species and 7.5 < DBH < 22.5.
+  + *Timber*: Changes in stem wood volume of trees from all species except firewood species (*Quercus ilex*, *Q. pubescens*, *Q. faginea*, *Q. cerrioides*, *Arbutus unedo* and *Erica arborea*), and DBH > 22.5
+  + *Firewood*: Changes in stem wood volume of firewood species (*Quercus ilex*, *Q. pubescens*, *Q. faginea*, *Q. cerrioides*, *Arbutus unedo* and *Erica arborea*), with DBH > 7.5, or stem wood volume of trees of other species and 7.5 < DBH < 22.5.
 
-The standing volume ($m^3 \cdot ha^{-1}$) of each product is obtained applying allometric volume equations depending on species, DBH and height, which are provided by the Spanish National Forest Inventory for each Spanish province and survey (in the case of future projections, equations from IFN3 are used). The standing volume corresponding to a given tree is multiplied by its corresponding density factor to obtain the volume per hectare and values are aggregated across tree records. The difference in standing volume for a given period (e.g. consecutive inventory surveys or model time steps) is divided by its duration. Function `IFNvolume()` from the R package called `IFNallometry` (available at GitHub) is used for volume calculations.
+The standing volume ($m^3 \cdot ha^{-1}$) of each tree is obtained applying allometric volume equations depending on species, DBH and height, which are provided by the Spanish National Forest Inventory for each Spanish province and survey (in the case of future projections, equations from IFN3 are used). Function `IFNvolume()` from the R package called `IFNallometry` (available at [GitHub](https://github.com/emf-creaf/IFNallometry)) is used for volume calculations. When not all trees in the forest plot have been measured, the standing volume of each measured tree is multiplied by its corresponding density factor in the plot to obtain the volume per hectare. Volumes can be aggregated across tree records per species, plot and/or diametric classes. The difference in standing volume for a given period (e.g. consecutive inventory surveys or model time steps) is divided by its duration in years. 
 
 **Remarks and potential improvements**: Estimation of potential timber and firewood supply assumes an extraction rate equal to 100% of growth, and should be estimated on forest stands where management operations have not been conducted, whereas actual extraction rates for a target region can be lower or higher than observed growth. The distinction among products could be made more sophisticated by considering a table indicating the proportion of different products for combinations of species and DBH class.
 
@@ -64,10 +64,10 @@ The standing volume ($m^3 \cdot ha^{-1}$) of each product is obtained applying a
 
 **Estimation procedures**: For historic periods, actual (observed) harvested volumes can be obtained from forestry statistics of the target area (e.g. @roces-diaz_assessing_2018). In addition, tree cuts between forest inventories in permanent plots can also be used to estimate actual harvested wood, if cut trees are identified. For future projections, simulations of forest dynamics including management scenarios can be used to estimate actual supply according to the scenario. As before, a distinction is made between timber (wood for construction, furniture or other uses) and firewood (wood for burning), on the basis of tree diameter at breast height (DBH) and species: 
 
-  + *Timber*: Stem wood volume of cut trees from all species, except holm oak (*Quercus ilex*), and DBH > 22.5
-  + *Firewood*: Stem wood volume of cut holm oak trees (*Quercus ilex*), with DBH > 7.5, or stem wood volume of cut trees of other species and 7.5 < DBH < 22.5.
+  + *Timber*: Stem wood volume of cut trees from all species, except firewood species (*Quercus ilex*, *Q. pubescens*, *Q. faginea*, *Q. cerrioides*, *Arbutus unedo* and *Erica arborea*), and DBH > 22.5
+  + *Firewood*: Stem wood volume of cut firewood species (*Quercus ilex*, *Q. pubescens*, *Q. faginea*, *Q. cerrioides*, *Arbutus unedo* and *Erica arborea*), with DBH > 7.5, or stem wood volume of cut trees of other species and 7.5 < DBH < 22.5.
 
-When necessary, the volume ($m^3 \cdot ha^{-1}$) of each product is obtained applying allometric volume equations depending on species, DBH and height, which are provided by the Spanish National Forest Inventory for each Spanish province and survey (in the case of future projections, equations from IFN3 are used). The volume corresponding to a given cut tree is multiplied by its corresponding density factor to obtain the volume per hectare and values are aggregated across tree records. This aggregated value is divided by its duration (e.g. time interval between surveys or the model time step) to express it as a rate. Function `IFNvolume()` from the R package called `IFNallometry` (available at GitHub) is used for volume calculations.
+When necessary, the volume ($m^3 \cdot ha^{-1}$) of each product is obtained applying allometric volume equations depending on species, DBH and height, which are provided by the Spanish National Forest Inventory for each Spanish province and survey (in the case of future projections, equations from IFN3 are used). The volume corresponding to a given cut tree is multiplied by its corresponding density factor to obtain the volume per hectare and values are aggregated across tree records. This aggregated value is divided by its duration (e.g. time interval between surveys or the model time step) to express it as a rate. Function `IFNvolume()` from the R package called `IFNallometry` (available at [GitHub](https://github.com/emf-creaf/IFNallometry)) is used for volume calculations.
 
 **Remarks and potential improvements**: As before, the distinction among products could be made more sophisticated by considering a table indicating the proportion of different products for combinations of species and DBH class.
 
@@ -81,7 +81,7 @@ When necessary, the volume ($m^3 \cdot ha^{-1}$) of each product is obtained app
 
 **Estimation procedures**: Empirical models have been developed for edible mushrooms in Catalan pine forests by de Miguel et al [-@de-miguel_impact_2014].
 
-**Remarks and potential improvements**: Note that the current procedures are restricted to mushroom species that can be eaten. There is a need to include mushroom production models for other forest types such as oaks, fir, if equations are made available. Food provision should be complemented by other products, such as pinewoods, for which production models have been published.
+**Remarks and potential improvements**: Note that the current procedures are restricted to mushroom species that can be eaten. There is a need to include mushroom production models for other forest types such as oaks, fir, if equations are made available. Food provision should be complemented by other products, such as pinecones, for which production models have been published.
 
 ### Water provision (1)
 
@@ -95,13 +95,13 @@ When necessary, the volume ($m^3 \cdot ha^{-1}$) of each product is obtained app
 
 Blue water is defined as the sum of water leaving the forest stand via overland (surface) runoff and the water draining beyond the reach of plant roots (i.e. deep drainage). These two flows can be estimated on a daily scale using a water balance model, and then be aggregated for period of evaluation and expressed as $mm \cdot yr^{-1}$. In our case, the MEDFATE model [@DeCaceres2015] is used for performing water balance simulations over the evaluation period. See model details in [medfate's reference book](https://emf-creaf.github.io/medfatebook/index.html). 
 
-**Remarks and potential improvements**: This indicator is appropriate to estimate the forest service on water supply, in absolute terms, but is very sensitive on the precipitation occurred during the evaluation period. Note that it could be called a 'disservice', since forest growth tends to reduce the amount of blue water (at small scales).
+**Remarks and potential improvements**: This indicator is appropriate to estimate the forest service on water supply, in absolute terms, but is very sensitive on the precipitation occurred during the evaluation period.
 
 ### Water provision (2)
 
 **Indicator**: Runoff ratio
 
-**Definition**: Water exported in relative terms, as the ratio of blue water over precipitation for an evaluation period
+**Definition**: Water exported in relative terms, as the ratio of blue water (i.e. the sum of surface runoff and deep drainage at the plot scale) over precipitation for an evaluation period
 
 **Metric and units**: A coefficient ranging between 0 (no water is exported) and 1 (all water that falls in the stand becomes blue water)
 
@@ -122,9 +122,9 @@ This indicator is estimated from the previous one, dividing the amount of blue w
 
 **Metric and units**: $Mg\,\,CO_2 \cdot ha^{-1} \cdot yr^{-1}$ or $Mg\,\,C \cdot ha^{-1} \cdot yr^{-1}$
 
-**Estimation procedures**: For historic periods, carbon sink can be obtained comparing wood biomass estimates from permanent plots of forest inventories. For future projections, simulations of forest dynamics are also possible. The sink rate is estimated subtracting the wood biomass at the beginning of the evaluation period from the wood biomass estimate at the end of the evaluation period, divided by period length. The tree biomass ($Mg CO_2^3 \cdot ha^{-1}$) is obtained applying allometric biomass equations for the above-ground and below-ground components, which depend on DBH and height and come from different publications [@dieguez-aranda_herramientas_2009; @ruiz-peinado_new_2011; @ruiz-peinado_biomass_2012]. Function `IFNbiomass()` from the R package `IFNallometry` (available at GitHub) is used for biomass calculations.
+**Estimation procedures**: For historic periods, carbon sink can be obtained comparing wood biomass estimates from permanent plots of forest inventories. For future projections, simulations of forest dynamics are also possible. The sink rate is estimated subtracting the wood biomass at the beginning of the evaluation period from the wood biomass estimate at the end of the evaluation period, divided by period length. The tree biomass ($Mg CO_2^3 \cdot ha^{-1}$) is obtained applying allometric biomass equations for the above-ground and below-ground components, which depend on DBH and height and come from different publications [@dieguez-aranda_herramientas_2009; @ruiz-peinado_new_2011; @ruiz-peinado_biomass_2012]. Function `IFNbiomass()` from the R package `IFNallometry` (available at [GitHub](https://github.com/emf-creaf/IFNallometry)) is used for biomass calculations. Forest carbon sink due to changes in shrub biomass can be also considered, using allometries presented in @DeCaceres2019 and available in R package `medfuels` (also available at [GitHub](https://github.com/spif-ctfc/medfuels)). Individual below-ground shrub biomass can be estimated from individual above-ground biomass using $B_{shrub, below} = 0.732 \cdot B_{shrub, above}^{0.9427}$ [@silva_root_2004].
 
-**Remarks and potential improvements**: Note that it would be possible to consider the biomass extracted in forest management as additional source of forest growth that is not observed when comparing the biomass estimates of standing trees. Forest carbon sink due to changes in shrub biomass can be also considered, if appropriate allometries are available (e.g. @DeCaceres2019 and R package `medfuels`available at GitHub).
+**Remarks and potential improvements**: Note that it would be possible to consider the biomass extracted in forest management as additional source of forest growth that is not observed when comparing the biomass estimates of standing trees. New allometries for shrub species in Spain have been presented in @montero_produccion_2020.
 
 
 ### Water regulation
@@ -212,24 +212,26 @@ A questionnaire is used to define the shape of the relationship between each met
 **Remarks and potential improvements**: The idea was to include also the amount of natural deadwood, but then the index becomes conceptually closer to the biodiversity potential (described below). In projections of forest dynamics, inclusion of species richness into this indicator requires that the model incorporates colonization processes. Otherwise, local extinction will always decrease species richness.
 
 
+## Supporting services
+
 ### Biodiversity potential
 
-**Indicator**: Biodiversity potential index (BPI)
+**Indicator**: A simplified version of the Biodiversity potential index (BPI)
 
-**Definition**: Potential of the forest stand to serve as habitat for biodiversity, on the basis of its vertical structure, diversity of woody species and presence of dead wood and large trees.
+**Definition**: Potential of the forest stand to serve as habitat for biodiversity, on the basis of its diversity of woody species, vertical structure, presence of large trees and standing and downed dead wood.
 
 **Metric and units**: A value between 0 (lowest biodiversity potential) and 5 (highest biodiversity potential).
 
 **Estimation procedures**  (yet to be implemented in a function):
 
-The *Index de Biodiversitat Potencial* (IBP) was adapted to Catalonia region by *Centre de la Propietat Forestal* [@baiges_teresa_posada_2019] from the work by @larrieu_lindice_2008. IBP was designed to be applied in the field and, therefore, not all its ten components can be evaluated from model simulation results. Here we adapted the Catalan IBP focusing on the following four components: 
+The BPI is a simplified version of the *Index de Biodiversitat Potencial* (IBP) was adapted to Catalonia region by *Centre de la Propietat Forestal* [@baiges_teresa_posada_2019] from the work by @larrieu_lindice_2008. IBP was designed to be applied in the field (including landscape features) and, therefore, not all its ten components can be evaluated from model simulation results. Here we adapted the Catalan IBP focusing on the following four components: 
 
   A) Diversity of native (or archaeophyte) species
   B) Vertical structure of vegetation
   C) The presence of dead wood
   D) The presence of large trees
 
-Moreover the current application of IBP in Catalonia (IBP ver. 3) is slightly different depending on two spatial domains: (D1) Mediterranean domain; (D2) Montane-subalpine domain. We addressed this level of complexity by calculating our BPI twice, once assuming one domain or the other, followed by averaging the two resulting values with weights depending on the ascription of the tree species occurring in the stand to the two domains. The following describes how the A-D components are estimated for each of the two domains and how the final BPI value is determined.
+Moreover the current application of IBP in Catalonia (IBP ver. 3) is slightly different depending on two biogeographic domains: (D1) Mediterranean domain; (D2) Montane-subalpine domain. We addressed this level of complexity by calculating our BPI twice, once assuming one domain or the other, followed by averaging the two resulting values with weights depending on the ascription of the tree species occurring in the stand to the two domains. The following describes how the A-D components are estimated for each of the two domains and how the final BPI value is determined.
 
 *$BPI_A$ - Native species*
 
@@ -248,7 +250,7 @@ For D2 we simplified the two tables given in BPI documentation. If the cover sum
 
 *$BPI_B$ - Vertical structure of vegetation*
 
-Fine strata are considered: herbaceous vegetation, very low (< 1.5 m), low (1.5-7 m), intermediate (7-20 m) and high (> 20 m). Classify woody cohorts into strata according to their height. Calculate the cover of each woody cohort (for shrubs is directly in the shrub data, for trees it comes from an allometry based DBH and open assumption). Sum the total cover of each strata. Count the number of strata that are more than 20% cover.
+Fine strata are considered: herbaceous vegetation, very low (< 1.5 m), low (1.5-7 m), intermediate (7-20 m) and high (> 20 m). Classify woody cohorts into strata according to their height. Calculate the cover of each woody cohort (for shrubs is directly in the shrub data, for trees it comes from an allometry based DBH and open-grown assumption). Sum the total cover of each strata. Count the number of strata that are more than 20% cover.
 
 | $BPI_B$ value | Criterion |
 |---------|-----------|
@@ -259,9 +261,9 @@ Fine strata are considered: herbaceous vegetation, very low (< 1.5 m), low (1.5-
 
 *$BPI_C$ - Dead wood* 
 
-Here we do not distinguishing between standing dead trees (i.e. snags) and dead trees in the ground (i.e. logs). Moreover, it is assumed that decay (decomposition) of dead wood is dealt externally, so that the index is calculated considering the actual current amount of dead wood in the stand. 
+Conversely to the original BPI, we do not distinguishing between standing dead trees (i.e. snags) and dead trees in the ground (i.e. logs). Moreover, it is assumed that decay (decomposition) of dead wood is dealt externally, so that the index is calculated considering the actual current amount of dead wood in the stand. 
 
-First, dead trees are classified into medium or large depending on their size and domain of application:
+First, dead trees are classified into medium or large depending on their size and biogeographic domain of application:
 
  + For D1, classify dead trees as *medium dead wood (MDW)* if 17.5 < DBH < 27.5 or *large dead wood (LDW)* if DBH > 27.5
  + For D2, classify dead trees as *medium dead wood (MDW)* if 17.5 < DBH < 37.5 or *large dead wood (LDW)* if DBH > 37.5
@@ -278,7 +280,7 @@ Then, the value of dead wood component is determined from the density of dead tr
 
 *$BPI_D$ - Large trees alive*
 
-First, live trees are classified into large or very large depending on their size and domain of application:
+First, live trees are classified into large or very large depending on their size and biogeographic domain of application:
 
   + For D1, classify trees as *large trees (LT)* if 37.5 cm < DBH < 57.5 cm or *very large trees (VLT)* if > 57.5 cm.
   + For D2, classify trees as *large trees (LT)* if 47.5 cm < DBH < 67.5 cm or *very large trees (VLT)* if > 67.5 cm.
@@ -295,13 +297,13 @@ Then, the value of large trees is determined from the density of trees in LT and
 
 *Overall Biodiversity Potential Index*
 
-BPI is the average of the four metrics, each one going from 0 to 5. Double weight is given to dead wood, according to the original definition of considering snags and logs separately.
+BPI is the average of the four metrics, each one going from 0 to 5. Double weight is given to dead wood, according to the original BPI definition of considering snags and logs separately.
 
 $$BPI_{domain} = (BPI_A + BPI_B + 2 \cdot BPI_C + BPI_D)/5$$
 For a given plot, we calculate BPI corresponding to each of the two domains, i.e. $BPI_{D1}$ and $BPI_{D2}$.  Then, we perform a weighted average of the two BPI values using the sum of basal area of species belonging to each of the domains, $BA_{D1}$ and $BA_{D2}$ as weights:
 
 $$BPI = \frac{BPI_{D1} \cdot BA_{D1} + BPI_{D2} \cdot BA_{D2}}{BA_{D1} + BA_{D2}}$$
 
-**Remarks and potential improvements**: In projections of forest dynamics, inclusion of species richness into this indicator requires that the model incorporates colonization processes. Otherwise, local extinction will always decrease species richness.
+**Remarks and potential improvements**: In projections of forest dynamics, inclusion of species richness into this indicator requires that the model incorporates colonization processes. Otherwise, local extinction will always decrease species richness. A potential improvement would be to explicitly model dead woody decay using functions depending on climatic conditions.
 
 ## References
