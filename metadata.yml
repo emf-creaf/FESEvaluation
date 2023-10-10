@@ -1,9 +1,9 @@
-id: fesevaluation
+id: fesevaluation_techdoc
 emf_type: tech_doc
 emf_public: true
 emf_automatized: true
 emf_reproducible: false
-emf_draft: true
+emf_draft: false
 emf_data_type: emf_data_product
 data_repository: ''
 model_repository: ''
@@ -16,6 +16,14 @@ authors:
 - mbanque
 - fdadamo
 - jmespelta
+authors_aff:
+- CREAF
+- CREAF
+- CREAF
+- CREAF
+- CREAF
+- CREAF
+- CREAF
 tags:
 - forest
 - ecosystem services
@@ -23,6 +31,7 @@ tags:
 links:
   url_source: https://github.com/emf-creaf/FESEvaluation
 requirements: ''
+categories: tech_doc 
 description: This technical document provides the definition and operational estimation
   procedures of a number of forest ecosystem services to be evaluated for Catalonia
 date: '2023-09-04'
