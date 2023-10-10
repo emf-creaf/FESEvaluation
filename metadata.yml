@@ -1,0 +1,31 @@
+id: fesevaluation
+emf_type: tech_doc
+emf_public: true
+emf_automatized: true
+emf_reproducible: false
+emf_draft: true
+emf_data_type: emf_data_product
+data_repository: ''
+model_repository: ''
+nodes: ''
+authors:
+- mcaceres
+- jvroces
+- jmartinezvilalta
+- jvayreda
+- mbanque
+- fdadamo
+- jmespelta
+tags:
+- forest
+- ecosystem services
+- catalonia
+links:
+  url_source: https://github.com/emf-creaf/FESEvaluation
+requirements: ''
+description: This technical document provides the definition and operational estimation
+  procedures of a number of forest ecosystem services to be evaluated for Catalonia
+date: '2023-09-04'
+date_lastmod: '2023-10-10'
+title: Evaluation of Forest Ecosystem Services
+
