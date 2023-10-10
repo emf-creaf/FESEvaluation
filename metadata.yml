@@ -1,5 +1,5 @@
 id: FESEvaluation
-emf_type: tech_doc
+emf_type: tech_docs
 emf_public: true
 emf_automatized: true
 emf_reproducible: false
@@ -31,7 +31,7 @@ tags:
 links:
   url_source: https://github.com/emf-creaf/FESEvaluation
 requirements: ''
-categories: tech_doc 
+categories: tech_docs
 description: This technical document provides the definition and operational estimation
   procedures of a number of forest ecosystem services to be evaluated for Catalonia
 date: '2023-09-04'
