@@ -4,8 +4,8 @@ author: "M. De Cáceres, J.V. Roces Diaz, J. Martinez-Vilalta, J. Vayreda, M. Ba
   F. D’Adamo, J.M. Espelta"
 date: "2023-09-04"
 output:
-  word_document: default
   html_document: default
+  word_document: default
   pdf_document: default
 bibliography: references.bib
 ---
