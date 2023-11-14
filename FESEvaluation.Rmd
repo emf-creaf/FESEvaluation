@@ -2,7 +2,7 @@
 title: "Evaluation of Forest Ecosystem Services"
 author: "M. De Cáceres, J.V. Roces Diaz, J. Martinez-Vilalta, J. Vayreda, M. Banqué,
   F. D’Adamo, J.M. Espelta"
-date: "2023-09-04"
+date: "2023-11-14"
 output:
   html_document: default
   word_document: default
@@ -174,8 +174,8 @@ and finally calculated the erosion mitigation (mitigated impact) as their differ
 $$EM = \gamma - \beta = K \cdot LS \cdot R \cdot (1 - C)$$
 Erosion components are estimated as follows:
 
- + $K$ values were sourced from the data base by Panagos et al. (2014) at 500 m resolution; 
- + $LS$ were obtained at 25 m of resolution from Panagos et al. (2015). 
+ + $K$ values were sourced from the data base by Panagos et al. [-@panagos_soil_2014] at 500 m resolution, available at [ESDAC](https://esdac.jrc.ec.europa.eu/); 
+ + $LS$ were obtained at 25 m of resolution from Panagos et al. [-@panagos_new_2015], available at [ESDAC](https://esdac.jrc.ec.europa.eu/). 
  + $R$ is calculated using the model by Diodato and Bellocchi [-@diodato_medrem_2010] and daily rainfall data (from “meteoland” package, De Caceres et al., 2018).
  + $C$ is the mitigation (reduction) effect of vegetation cover. Despite the $C$ term promotes its interpretation as cover, a complete vegetation cover should have a maximum reduction of erosion, and hence $C = 0$. In practice, we estimate $C$ as the faction of photosynthetically active radiation (PAR) reaching the ground ($FPAR_{ground}$), which can be estimated as a function of leaf area index and extinction coefficients:
  $$C = FPAR_{ground}=e^{-0.5 \cdot LAI_{herb}} \cdot e^{-\sum_{i}{k_{i} \cdot LAI_{i}}}$$
